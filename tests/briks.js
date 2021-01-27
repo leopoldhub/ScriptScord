@@ -64,7 +64,9 @@ function cD() {
                     if (sc1 == brc * bcc) {
                         alert("YOU WIN, CONGRATS!");
                         getMessage().removeChild(a1);
-                        getMessage().removeChild(getMessage().getElementsByTagName('script')[0]);
+                        getMessage().getElementsByTagName('script').forEach( nd => {
+                            getMessage().removeChild(nd);
+                        });
                     }
                 }
             }
@@ -142,7 +144,9 @@ function draw() {
             if (!lv1) {
                 alert("GAME OVER");
                 getMessage().removeChild(a1);
-                getMessage().removeChild(getMessage().getElementsByTagName('script')[0]);
+                getMessage().getElementsByTagName('script').forEach( nd => {
+                   getMessage().removeChild(nd);
+                });
             } else {
                 x = a1.width / 2;
                 y = a1.height - 30;
