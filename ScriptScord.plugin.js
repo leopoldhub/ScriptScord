@@ -4,7 +4,7 @@
  * @invite Tf52DJh
  * @donate https://www.paypal.com/paypalme/BurnGemios3643
  * @website https://github.com/leopoldhub
- * @source https://github.com/leopoldhub
+ * @source https://github.com/leopoldhub/ScriptScord
  */
 
 module.exports = (_ => {
