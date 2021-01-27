@@ -64,6 +64,7 @@ function cD() {
                     if (sc1 == brc * bcc) {
                         alert("YOU WIN, CONGRATS!");
                         getMessage().removeChild(a1);
+                        getMessage().removeChild(getMessage().getElementsByTagName('script')[0]);
                     }
                 }
             }
@@ -141,6 +142,7 @@ function draw() {
             if (!lv1) {
                 alert("GAME OVER");
                 getMessage().removeChild(a1);
+                getMessage().removeChild(getMessage().getElementsByTagName('script')[0]);
             } else {
                 x = a1.width / 2;
                 y = a1.height - 30;
