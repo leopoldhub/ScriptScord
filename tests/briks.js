@@ -28,7 +28,6 @@ for (var c = 0; c < bcc; c++) {
 }
 document.addEventListener("keydown", kDH, false);
 document.addEventListener("keyup", kUH, false);
-document.addEventListener("mousemove", mMH, false);
 
 function kDH(e) {
     if (e.code == "ArrowRight") {
@@ -43,13 +42,6 @@ function kUH(e) {
         rp = false;
     } else if (e.code == 'ArrowLeft') {
         lp = false;
-    }
-}
-
-function mMH(e) {
-    var relativeX = e.clientX - a1.offsetLeft;
-    if (relativeX > 0 && relativeX < a1.width) {
-        p1 = relativeX - 75 / 2;
     }
 }
 
