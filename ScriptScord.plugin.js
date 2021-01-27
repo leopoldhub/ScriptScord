@@ -77,7 +77,6 @@ module.exports = (_ => {
             processMessageContent (e) {
                 
                 if(e.instance.props.message.content && /^.*```(js|javascript)\n(.+)```.*$/gsi.test(e.instance.props.message.content)){
-                    console.log(e);
                     let script = /^.*```(js|javascript)\n(.+)```.*$/gsi.exec(e.instance.props.message.content)[2];
                     let msgElement = document.getElementById('chat-messages-'+e.instance.props.message.id);
                     if(!msgElement)return;
