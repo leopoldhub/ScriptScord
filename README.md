@@ -29,8 +29,9 @@ To create it, please respect this:
  - getMessage()
  - loadScript(url)
 
-*getMessage()* return the html node corresponding to the discord message
-*loadScript(url)* allow you to load script from an online file (if script is too large for a discord message...)
+*getMessage()* return the html node corresponding to the discord message.
+
+*loadScript(url)* allow you to load script from an online file (if script is too large for a discord message...).
 
 To add an élément (text, image, canvas, button...) to the discord message, you have to add a child to it. example:
 
