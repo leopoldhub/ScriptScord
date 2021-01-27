@@ -85,11 +85,34 @@ module.exports = (_ => {
                     let old = document.getElementById("execjs-"+e.instance.props.message.id);
                     let btn = document.createElement("button");
 
-                    script = "function getMessage() {return document.getElementById('chat-messages-"+e.instance.props.message.id+"');}\n"+script;
+                    function getMessage() {return document.getElementById('chat-messages-803857194575069214');}
 
+                    script = "function getMessage() {return document.getElementById('chat-messages-"+e.instance.props.message.id+"');}\n"
+                    + `function loadScript(urlhttp) {
+                        let res = jQuery.ajax({
+                                url: urlhttp,
+                                success: function (result) {},
+                                async: false
+                            });
+                        let scr = document.createElement("script");
+                        scr.innerHTML = "function getMessage() {return document.getElementById('"+getMessage().id+"');}" + res.responseText;
+                        scr.defer = true;
+                        getMessage().appendChild(scr);
+                    }\n`
+                    +script;
+
+                    btn.style.paddingTop = "10px";
+                    btn.style.paddingBottom = "10px";
+                    btn.style.paddingLeft = "20px";
+                    btn.style.paddingRight = "20px";
+                    btn.style.fontSize = "14px";
+                    btn.style.borderRadius = "2px";
+                    btn.style.color = "#ffffff";
+                    btn.style.backgroundColor = "#7289da";
                     btn.innerHTML = "execute js";
                     btn.id = "execjs-"+e.instance.props.message.id;
                     btn.addEventListener ("click", function() {
+                        msgElement.removeChild(btn);
                         console.warn(`\n========================================\nWARNING!WARNING!WARNING!WARNING!WARNING!\n========================================`);
                         console.log(`%c running embeded script with ScriptScord by BurnGemios3643\nGithub: https://github.com/leopoldhub`, `background: #03adfc; color: #ffffff`);
                         console.log(`script code: \n${script}`);
