@@ -63,7 +63,7 @@ function cD() {
                     sc1++;
                     if (sc1 == brc * bcc) {
                         alert("YOU WIN, CONGRATS!");
-                        document.location.reload();
+                        getMessage().removeChild(a1);
                     }
                 }
             }
@@ -140,7 +140,7 @@ function draw() {
             lv1--;
             if (!lv1) {
                 alert("GAME OVER");
-                document.location.reload();
+                getMessage().removeChild(a1);
             } else {
                 x = a1.width / 2;
                 y = a1.height - 30;
