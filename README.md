@@ -48,10 +48,13 @@ To load an external script, use *loadScript(url)* as the example:
     ```
 ## Some screenshots
 Minesweeper: (by [cosmith](https://github.com/cosmith/minesweeper))
+
 ![MineSweeper](https://github.com/leopoldhub/ScriptScord/blob/master/iFwARhBQQj.png?raw=true)
 
 Bricks: (by [end3r](https://github.com/end3r/Gamedev-Canvas-workshop/blob/gh-pages/lesson10.html))
+
 ![Bricks](https://github.com/leopoldhub/ScriptScord/blob/master/YIyC8gtH0X.png?raw=true)
 
 RickRolled
+
 ![RickRolled](https://github.com/leopoldhub/ScriptScord/blob/master/Qtl1AJoO9v.png?raw=true)
