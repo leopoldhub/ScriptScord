@@ -2,6 +2,7 @@ var a1 = document.createElement("canvas");
 a1.width = 480;
 a1.height = 320;
 getMessage().appendChild(a1);
+var rnt = true;
 var ctx = a1.getContext("2d");
 var x = a1.width / 2;
 var y = a1.height - 30;
@@ -63,6 +64,7 @@ function cD() {
                     sc1++;
                     if (sc1 == brc * bcc) {
                         alert("YOU WIN, CONGRATS!");
+                        rnt = false;
                         getMessage().removeChild(a1);
                         getMessage().getElementsByTagName('script').forEach( nd => {
                             getMessage().removeChild(nd);
@@ -121,6 +123,7 @@ function drawlv1() {
 }
 
 function draw() {
+    if(!rnt)return;
     ctx.clearRect(0, 0, a1.width, a1.height);
     ctx.rect(0, 0, a1.width, a1.height);
     ctx.fillStyle = "#ffffff";
@@ -143,6 +146,7 @@ function draw() {
             lv1--;
             if (!lv1) {
                 alert("GAME OVER");
+                rnt = false;
                 getMessage().removeChild(a1);
                 getMessage().getElementsByTagName('script').forEach( nd => {
                    getMessage().removeChild(nd);
