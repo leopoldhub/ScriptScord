@@ -1,5 +1,5 @@
 # ScriptScord
-*ScriptScord* is a **Better Discord** plugin who allow user to run script from js embeded discord messages
+*ScriptScord* is a **[BetterDiscord](https://github.com/rauenzi/BetterDiscordApp/releases)** plugin who allow user to run script from js embeded discord messages
 
 **Feel free to contribute, report bugs and eventually make a donation on my paypal ^^ :**
 https://paypal.me/BurnGemios3643
