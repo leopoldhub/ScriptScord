@@ -80,24 +80,69 @@ module.exports = (_ => {
                     console.log(e);
                     let script = /^.*```(js|javascript)\n(.+)```.*$/gsi.exec(e.instance.props.message.content)[2];
                     let msgElement = document.getElementById('chat-messages-'+e.instance.props.message.id);
-                    if(msgElement == null)return;
+                    if(!msgElement)return;
                     
                     let old = document.getElementById("execjs-"+e.instance.props.message.id);
                     let btn = document.createElement("button");
 
                     function getMessage() {return document.getElementById('chat-messages-803857194575069214');}
 
-                    script = "function getMessage() {return document.getElementById('chat-messages-"+e.instance.props.message.id+"');}\n"
-                    + `function loadScript(urlhttp) {
+                    let rscript = script;
+                    script = `
+                    function getMessage() {
+                        return document.getElementById("chat-messages-"+e.instance.props.message.id);
+                    }
+
+                    function createElementFromHTML(htmlString) {
+                      let div = document.createElement("div");
+                      div.innerHTML = htmlString.trim();
+                      return div.firstChild; 
+                    }
+
+                    function appendDiv(id){
+                        let div = createElementFromHTML("<div id='"+getMessage().id+"-"+id+"'></div>");
+                        getMessage().appendChild(div);
+                        return div;
+                    }
+
+                    function appendDivIfDontExist(id){
+                        let div = document.getElementById(getMessage().id+"-"+id);
+                        if(div == undefined || div == null) div = appendDiv(id);
+                        return div;
+                    }
+
+                    function replaceDivIfExist(id){
+                        let div = document.getElementById(getMessage().id+"-"+id);
+                        if(div != undefined && div != null){
+                            let nw = createElementFromHTML("<div id='"+getMessage().id+"-"+id+"'></div>");
+                            getMessage().replaceChild(nw, div);
+                            div = nw;
+                        }else {
+                            div = appendDiv(id);
+                        }
+                        return div;
+                    }
+
+                    function loadScript(urlhttp) {
                         let res = jQuery.ajax({
                                 url: urlhttp,
                                 success: function (result) {},
                                 async: false
                             });
                         let scr = document.createElement("script");
-                        scr.innerHTML = "function getMessage() {return document.getElementById('"+getMessage().id+"');}" + res.responseText;
+                        scr.id = getMessage().id+"-script";
+                        scr.innerHTML = "function getMessage(){return document.getElementById('"+getMessage().id+"');}\\n"
+                        + createElementFromHTML.toString() + "\\n"
+                        + appendDiv.toString() + "\\n"
+                        + appendDivIfDontExist.toString() + "\\n"
+                        + replaceDivIfExist.toString() + "\\n"
+                        + loadScript.toString() + "\\n"
+                        + res.responseText;
+                        
                         scr.defer = true;
-                        getMessage().appendChild(scr);
+                        let old = document.getElementById(getMessage().id+"-script");
+                        if(old != undefined && old != null) getMessage().replaceChild(scr, old);
+                        else getMessage().appendChild(scr);
                     }\n`
                     +script;
 
@@ -114,15 +159,14 @@ module.exports = (_ => {
                     btn.addEventListener ("click", function() {
                         msgElement.removeChild(btn);
                         console.warn(`\n========================================\nWARNING!WARNING!WARNING!WARNING!WARNING!\n========================================`);
-                        console.log(`%c running embeded script with ScriptScord by BurnGemios3643\nGithub: https://github.com/leopoldhub`, `background: #03adfc; color: #ffffff`);
-                        console.log(`script code: \n${script}`);
+                        console.log(`%crunning embeded script with ScriptScord by BurnGemios3643\nGithub: https://github.com/leopoldhub`, `background: #03adfc; color: #ffffff`);
+                        console.log(`script code: \n${rscript}`);
                         console.log(`%c script start =========================`, `color: #ff0000`);
                         eval(script);
-                        console.log(`%c script ends  =========================`, `color: #00ff00`);
+                        console.log(`%c script end   =========================`, `color: #00ff00`);
                     });
-                    if (old) {
-                        old.parentNode.replaceChild(btn, old);
-                    } else msgElement.appendChild(btn);
+                    if (old != undefined && old != null) msgElement.replaceChild(btn, old);
+                    else msgElement.appendChild(btn);
                 }
             }
 
