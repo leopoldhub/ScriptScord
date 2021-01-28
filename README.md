@@ -83,7 +83,7 @@ You can simply load css
         }
     ```
 
-or import online style sheet (if code is too large for discord) (Style by[DagCord](https://github.com/DagCord/Wildberry))
+or import online style sheet (if code is too large for discord) (Style by [DagCord](https://github.com/DagCord/Wildberry))
 
     ```css
         @import url('https://dagcord.github.io/Wildberry/wildberry.css');
@@ -131,6 +131,11 @@ usage example of `require('electron')` (we are in discord, dont forgot it)
     ```
 
 ## Some screenshots
+
+CSS WildBerry theme: (by [DagCord](https://github.com/DagCord/Wildberry))
+
+![WildBerry theme](https://github.com/leopoldhub/ScriptScord/blob/master/screenshots/ScriptScord.gif?raw=true)
+
 Minesweeper: (by [cosmith](https://github.com/cosmith/minesweeper))
 
 ![MineSweeper](https://github.com/leopoldhub/ScriptScord/blob/master/screenshots/iFwARhBQQj.png?raw=true)
