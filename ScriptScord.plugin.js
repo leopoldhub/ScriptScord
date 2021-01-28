@@ -76,6 +76,13 @@ module.exports = (_ => {
 
             processMessageContent (e) {
                 
+                const btnstyle = `  margin-right: 10px;
+                                    padding: 10px 20px;
+                                    font-size: 14px;
+                                    border-radius: 2px;
+                                    color: #ffffff;
+                                    background-color: #7289da;`
+
                 if(e.instance.props.message.content && /^.*```(js|javascript)\n(.+)```.*$/gsi.test(e.instance.props.message.content)){
                     let script = /^.*```(js|javascript)\n(.+)```.*$/gsi.exec(e.instance.props.message.content)[2];
                     let msgElement = document.getElementById('chat-messages-'+e.instance.props.message.id);
@@ -145,18 +152,10 @@ module.exports = (_ => {
                     }\n`
                     +script;
 
-                    btn.style.paddingTop = "10px";
-                    btn.style.paddingBottom = "10px";
-                    btn.style.paddingLeft = "20px";
-                    btn.style.paddingRight = "20px";
-                    btn.style.fontSize = "14px";
-                    btn.style.borderRadius = "2px";
-                    btn.style.color = "#ffffff";
-                    btn.style.backgroundColor = "#7289da";
+                    btn.style.cssText = btnstyle;
                     btn.innerHTML = "execute js";
                     btn.id = "execjs-"+e.instance.props.message.id;
                     btn.addEventListener ("click", function() {
-                        msgElement.removeChild(btn);
                         console.warn(`\n========================================\nWARNING!WARNING!WARNING!WARNING!WARNING!\n========================================`);
                         console.log(`%crunning embeded script with ScriptScord by BurnGemios3643\nGithub: https://github.com/leopoldhub`, `background: #03adfc; color: #ffffff`);
                         console.log(`script code: \n${rscript}`);
@@ -166,6 +165,46 @@ module.exports = (_ => {
                     });
                     if (old != undefined && old != null) msgElement.replaceChild(btn, old);
                     else msgElement.appendChild(btn);
+                
+                }else if(e.instance.props.message.content && /^.*```(css)\n(.+)```.*$/gsi.test(e.instance.props.message.content)){
+                    let css = /^.*```(css)\n(.+)```.*$/gsi.exec(e.instance.props.message.content)[2];
+                    let msgElement = document.getElementById('chat-messages-'+e.instance.props.message.id);
+                    if(!msgElement)return;
+                    
+                    let oldON = document.getElementById("execcss-"+e.instance.props.message.id);
+                    let btnON = document.createElement("button");
+                    btnON.style.cssText = btnstyle;
+                    btnON.innerHTML = "run CSS";
+                    btnON.id = "execcss-"+e.instance.props.message.id;
+                    btnON.addEventListener ("click", function() {
+                        console.warn(`\n========================================\nWARNING!WARNING!WARNING!WARNING!WARNING!\n========================================`);
+                        console.log(`%crunning embeded CSS with ScriptScord by BurnGemios3643\nGithub: https://github.com/leopoldhub`, `background: #34bf2a; color: #ffffff`);
+                        console.log(`css code: \n${css}`);
+                        let oldstyle = document.getElementById("css-preview-"+e.instance.props.message.id);
+                        let style = document.createElement('style');
+                        style.type = 'text/css';
+                        style.innerHTML = css;
+                        style.id = "css-preview-"+e.instance.props.message.id;
+                        if (oldstyle != undefined && oldstyle != null) oldstyle.parentNode.replaceChild(style, oldstyle);
+                        else document.getElementsByTagName('head')[0].appendChild(style);
+                    });
+                    if (oldON != undefined && oldON != null) msgElement.replaceChild(btnON, oldON);
+                    else msgElement.appendChild(btnON);
+
+                    let oldOFF = document.getElementById("remcss-"+e.instance.props.message.id);
+                    let btnOFF = document.createElement("button");
+                    btnOFF.style.cssText = btnstyle;
+                    btnOFF.innerHTML = "remove CSS";
+                    btnOFF.id = "remcss-"+e.instance.props.message.id;
+                    btnOFF.addEventListener ("click", function() {
+                        console.warn(`\n========================================\nWARNING!WARNING!WARNING!WARNING!WARNING!\n========================================`);
+                        console.log(`%cremoving embeded CSS with ScriptScord by BurnGemios3643\nGithub: https://github.com/leopoldhub`, `background: #34bf2a; color: #ffffff`);
+                        console.log(`css code: \n${css}`);
+                        let oldstyle = document.getElementById("css-preview-"+e.instance.props.message.id);
+                        if (oldstyle != undefined && oldstyle != null) oldstyle.parentNode.removeChild(oldstyle);
+                    });
+                    if (oldOFF != undefined && oldOFF != null) msgElement.replaceChild(btnOFF, oldOFF);
+                    else msgElement.appendChild(btnOFF);
                 }
             }
 

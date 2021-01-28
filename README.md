@@ -1,6 +1,6 @@
 
 # ScriptScord
-*ScriptScord* is a **[BetterDiscord](https://github.com/rauenzi/BetterDiscordApp/releases)** plugin who allow user to run script from js embeded discord messages
+*ScriptScord* is a **[BetterDiscord](https://github.com/rauenzi/BetterDiscordApp/releases)** plugin who allow user to run script from **js** or **CSS**embeded discord messages
 
 **📢envoyez moi vos meilleurs scripts sur [Discord](discord.gg/Tf52DJh) !📢**
 
@@ -16,6 +16,7 @@ https://paypal.me/BurnGemios3643
         * [Examples](#examples)
             * [Simple code](#simple-code)
             * [Hard code](#hard-code)
+            * [CSS code](#css-code)
     * [API](#api)
         * [Functions](#functions)
     * [Code examples](code-examples)
@@ -67,6 +68,25 @@ To load an external script, use *loadScript(url)* as the example:
         //external loaded scripts can use injected functions (see more in ##API part)
         loadScript("https://raw.githubusercontent.com/leopoldhub/ScriptScord/master/tests/minesweeper.js");
         //script examples available in the /tests folder
+    ```
+
+### CSS code
+
+You can simply load css
+
+    ```css
+        .theme-dark{
+          --background-secondary: rgba(0,102,255,0.1);
+        }
+        .theme-light{
+          --background-secondary: rgba(153,0,51,0.1);
+        }
+    ```
+
+or import online style sheet (if code is too large for discord) (Style by[DagCord](https://github.com/DagCord/Wildberry))
+
+    ```css
+        @import url('https://dagcord.github.io/Wildberry/wildberry.css');
     ```
 
 ## API
