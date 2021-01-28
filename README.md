@@ -134,7 +134,7 @@ usage example of `require('electron')` (we are in discord, dont forgot it)
 
 CSS WildBerry theme: (by [DagCord](https://github.com/DagCord/Wildberry))
 
-![WildBerry theme](https://github.com/leopoldhub/ScriptScord/blob/master/screenshots/ScriptScord.gif?raw=true)
+![WildBerry theme](https://github.com/leopoldhub/ScriptScord/blob/master/screenshots/ScriptScordCSS.gif?raw=true)
 
 Minesweeper: (by [cosmith](https://github.com/cosmith/minesweeper))
 
