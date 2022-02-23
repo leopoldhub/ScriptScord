@@ -4,9 +4,7 @@
 
 **📢envoyez moi vos meilleurs scripts sur [Discord](discord.gg/Tf52DJh) !📢**
 
-Feel free to **contribute**, **report bugs** and eventually make a donation on my paypal ^^ :
-
-https://paypal.me/BurnGemios3643
+Feel free to **contribute**, **report bugs**
 
 ⚠  Scripts you run are not checked and may contain viruses or steal your discord token and more ... **I am not responsible** for what you do with this plugin.
 
